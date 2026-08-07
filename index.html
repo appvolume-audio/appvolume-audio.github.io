@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      data-i18n-content="meta.description"
+      name="description"
+      content="AppVolume 是一款 macOS 菜单栏音频工具，可分别调节不同 App 的音量，并为每个 App 选择独立的音频输出设备。"
+    />
+    <meta name="theme-color" content="#f3f0e8" />
+    <title data-i18n="meta.title">AppVolume — 每个 App，自己的音量与声场</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./i18n.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="accessibility.skip">跳到主要内容</a>
+
+    <header class="site-header" data-site-header>
+      <a class="brand" href="#top" aria-label="AppVolume 首页" data-i18n-aria-label="accessibility.home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" role="img">
+            <path d="M7 13.5h4l5-4v13l-5-4H7z" />
+            <path d="M20 12.5c1.3 1.1 2 2.2 2 3.5s-.7 2.4-2 3.5" />
+            <path d="M23 9.5c2.4 1.8 3.6 4 3.6 6.5S25.4 20.7 23 22.5" />
+          </svg>
+        </span>
+        <span>AppVolume</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="主要导航" data-i18n-aria-label="accessibility.primary_nav">
+        <a href="#capabilities" data-i18n="nav.capabilities">核心能力</a>
+        <a href="#workflow" data-i18n="nav.scenarios">使用场景</a>
+        <a href="#privacy" data-i18n="nav.local">本地处理</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="language-picker">
+          <span class="sr-only" data-i18n="language.label">选择语言</span>
+          <svg viewBox="0 0 18 18" aria-hidden="true">
+            <circle cx="9" cy="9" r="7" />
+            <path d="M2.4 9h13.2M9 2c2 2 3 4.3 3 7s-1 5-3 7M9 2C7 4 6 6.3 6 9s1 5 3 7" />
+          </svg>
+          <select data-language-select aria-label="选择语言" data-i18n-aria-label="language.label">
+            <option value="auto" data-i18n="language.auto">自动（系统）</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+
+        <a class="header-cta" href="#early-access">
+          <span data-i18n="nav.get">获取 AppVolume</span>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span data-i18n="hero.eyebrow">macOS 音频控制，终于各就各位</span>
+          </p>
+          <h1 data-i18n-html="hero.title">每个 App，<br />自己的音量与声场。</h1>
+          <p class="hero-summary" data-i18n="hero.summary">
+            音乐留在音箱，会议只进耳机；浏览器安静一点，游戏保留力度。
+            AppVolume 把原本混在一起的系统声音，变成一眼可控的独立通道。
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demo">
+              <span data-i18n="hero.demo">体验交互演示</span>
+              <svg viewBox="0 0 18 18" aria-hidden="true">
+                <path d="M4 9h10M10 5l4 4-4 4" />
+              </svg>
+            </a>
+            <a class="button button-quiet" href="#workflow" data-i18n="hero.how">看看它如何工作</a>
+          </div>
+
+          <ul class="compatibility-list" aria-label="产品信息" data-i18n-aria-label="accessibility.product_info">
+            <li>macOS 14.2+</li>
+            <li data-i18n="hero.menu_bar">菜单栏常驻</li>
+            <li data-i18n="hero.trial">7 天完整试用</li>
+          </ul>
+        </div>
+
+        <div class="hero-demo" id="demo" data-reveal data-delay="120">
+          <div class="signal-stage" aria-hidden="true">
+            <span class="signal-label signal-label-a">Music / 48%</span>
+            <span class="signal-label signal-label-b">Meet / AirPods</span>
+            <span class="signal-label signal-label-c">Safari / 18%</span>
+            <svg class="signal-lines" viewBox="0 0 720 620" preserveAspectRatio="none">
+              <path class="signal-path signal-path-one" d="M2 124 C150 124 156 208 318 208 S520 156 718 156" />
+              <path class="signal-path signal-path-two" d="M2 280 C152 280 174 258 318 258 S526 348 718 348" />
+              <path class="signal-path signal-path-three" d="M2 440 C158 440 182 320 318 320 S516 498 718 498" />
+            </svg>
+          </div>
+
+          <div class="product-window" aria-label="AppVolume 交互式产品演示" data-i18n-aria-label="demo.label">
+            <div class="window-titlebar">
+              <div class="traffic-lights" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <span class="window-title">AppVolume</span>
+              <button class="icon-button settings-button" type="button" aria-label="打开设置演示" data-i18n-aria-label="demo.settings">
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M8.7 2.5h2.6l.5 2a6 6 0 0 1 1.1.6l2-.6 1.3 2.3-1.5 1.4a6 6 0 0 1 0 1.3l1.5 1.4-1.3 2.3-2-.6a6 6 0 0 1-1.1.6l-.5 2H8.7l-.5-2a6 6 0 0 1-1.1-.6l-2 .6-1.3-2.3 1.5-1.4a6 6 0 0 1 0-1.3L3.8 6.8l1.3-2.3 2 .6a6 6 0 0 1 1.1-.6z" />
+                  <circle cx="10" cy="8.85" r="2.2" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="window-status">
+              <span class="status-indicator" aria-hidden="true"></span>
+              <span data-i18n="demo.monitoring">正在监听 3 个音频 App</span>
+              <span class="status-time" data-i18n="demo.live">实时</span>
+            </div>
+
+            <section class="master-control" aria-labelledby="master-title">
+              <div class="control-heading">
+                <div>
+                  <p class="control-kicker" data-i18n="demo.system_output">SYSTEM OUTPUT</p>
+                  <h2 id="master-title" data-i18n="demo.master_volume">主音量</h2>
+                </div>
+                <output class="master-value" for="master-volume">72%</output>
+              </div>
+              <div class="slider-line">
+                <span class="speaker-glyph" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M3 8h4l4-3.5v11L7 12H3zM14 7c1 .8 1.5 1.8 1.5 3S15 12.2 14 13M16 4.8c1.7 1.4 2.6 3.1 2.6 5.2S17.7 13.8 16 15.2" /></svg>
+                </span>
+                <input id="master-volume" class="volume-slider master-slider" type="range" min="0" max="100" value="72" aria-label="系统主音量" data-i18n-aria-label="demo.master_volume" />
+              </div>
+              <div class="device-field">
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M5 7.5v-2a4 4 0 0 1 8 0v2M5 7.5H3.8A1.8 1.8 0 0 0 2 9.3v3.4a1.8 1.8 0 0 0 1.8 1.8H5zM13 7.5h1.2A1.8 1.8 0 0 1 16 9.3v3.4a1.8 1.8 0 0 1-1.8 1.8H13z" /></svg>
+                <span data-i18n="device.macbook_speakers">MacBook Pro 扬声器</span>
+                <span class="field-meta" data-i18n="device.system_default_short">系统默认</span>
+              </div>
+            </section>
+
+            <section class="app-mixer" aria-labelledby="mixer-title">
+              <div class="mixer-header">
+                <h2 id="mixer-title" data-i18n="demo.now_playing">正在播放</h2>
+                <span>3 APPS</span>
+              </div>
+
+              <article class="app-row" data-app-row data-accent="#ff5b3d">
+                <div class="app-identity">
+                  <span class="app-icon music-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M16 4v11.2a3.2 3.2 0 1 1-1.5-2.7V6.8L8 8.2v8a3.2 3.2 0 1 1-1.5-2.7V6.6z" /></svg>
+                  </span>
+                  <div>
+                    <h3>Music</h3>
+                    <p class="route-summary" data-route-device="macbook" data-i18n="route.to_macbook">到 MacBook Pro 扬声器</p>
+                  </div>
+                  <output class="app-volume-value">48%</output>
+                </div>
+                <div class="app-controls">
+                  <button class="mute-button" type="button" aria-label="将 Music 静音" aria-pressed="false">
+                    <svg class="sound-on" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12 6c1 .8 1.5 1.8 1.5 3S13 11.2 12 12M14.3 3.8c1.7 1.4 2.6 3.1 2.6 5.2s-.9 3.8-2.6 5.2" /></svg>
+                    <svg class="sound-off" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12.5 6.5l4 5M16.5 6.5l-4 5" /></svg>
+                  </button>
+                  <input class="volume-slider app-slider" type="range" min="0" max="100" value="48" aria-label="Music 音量" />
+                  <label class="device-select-wrap">
+                    <span class="sr-only">Music 输出设备</span>
+                    <select class="device-select" aria-label="Music 输出设备" data-app-name="Music">
+                      <option value="macbook" data-i18n="device.macbook_speakers">MacBook Pro 扬声器</option>
+                      <option value="airpods">AirPods Pro</option>
+                      <option value="display">Studio Display</option>
+                    </select>
+                  </label>
+                </div>
+              </article>
+
+              <article class="app-row" data-app-row data-accent="#35a56f">
+                <div class="app-identity">
+                  <span class="app-icon meet-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M5 6h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM16 10l5-3v10l-5-3z" /></svg>
+                  </span>
+                  <div>
+                    <h3>Meet</h3>
+                    <p class="route-summary" data-route-device="airpods" data-i18n="route.to_airpods">到 AirPods Pro</p>
+                  </div>
+                  <output class="app-volume-value">82%</output>
+                </div>
+                <div class="app-controls">
+                  <button class="mute-button" type="button" aria-label="将 Meet 静音" aria-pressed="false">
+                    <svg class="sound-on" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12 6c1 .8 1.5 1.8 1.5 3S13 11.2 12 12M14.3 3.8c1.7 1.4 2.6 3.1 2.6 5.2s-.9 3.8-2.6 5.2" /></svg>
+                    <svg class="sound-off" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12.5 6.5l4 5M16.5 6.5l-4 5" /></svg>
+                  </button>
+                  <input class="volume-slider app-slider" type="range" min="0" max="100" value="82" aria-label="Meet 音量" />
+                  <label class="device-select-wrap">
+                    <span class="sr-only">Meet 输出设备</span>
+                    <select class="device-select" aria-label="Meet 输出设备" data-app-name="Meet">
+                      <option value="airpods">AirPods Pro</option>
+                      <option value="macbook" data-i18n="device.macbook_speakers">MacBook Pro 扬声器</option>
+                      <option value="display">Studio Display</option>
+                    </select>
+                  </label>
+                </div>
+              </article>
+
+              <article class="app-row" data-app-row data-accent="#d89d22">
+                <div class="app-identity">
+                  <span class="app-icon safari-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="m14.8 8.2-1.7 4.9-4.9 1.7 1.7-4.9z" /></svg>
+                  </span>
+                  <div>
+                    <h3>Safari</h3>
+                    <p class="route-summary" data-route-device="system" data-i18n="route.to_system">到系统默认设备</p>
+                  </div>
+                  <output class="app-volume-value">18%</output>
+                </div>
+                <div class="app-controls">
+                  <button class="mute-button" type="button" aria-label="将 Safari 静音" aria-pressed="false">
+                    <svg class="sound-on" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12 6c1 .8 1.5 1.8 1.5 3S13 11.2 12 12M14.3 3.8c1.7 1.4 2.6 3.1 2.6 5.2s-.9 3.8-2.6 5.2" /></svg>
+                    <svg class="sound-off" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12.5 6.5l4 5M16.5 6.5l-4 5" /></svg>
+                  </button>
+                  <input class="volume-slider app-slider" type="range" min="0" max="100" value="18" aria-label="Safari 音量" />
+                  <label class="device-select-wrap">
+                    <span class="sr-only">Safari 输出设备</span>
+                    <select class="device-select" aria-label="Safari 输出设备" data-app-name="Safari">
+                      <option value="system" data-i18n="device.system_default">系统默认设备</option>
+                      <option value="airpods">AirPods Pro</option>
+                      <option value="display">Studio Display</option>
+                    </select>
+                  </label>
+                </div>
+              </article>
+            </section>
+
+            <div class="window-footer">
+              <span data-i18n-html="demo.trial"><strong>7</strong> 天完整试用</span>
+              <span class="privacy-chip">
+                <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 6V4.5a4 4 0 0 1 8 0V6M2 6h10v7H2z" /></svg>
+                <span data-i18n="demo.local_processing">本地处理</span>
+              </span>
+            </div>
+          </div>
+
+          <p class="demo-caption" data-i18n="demo.caption">这不是静态截图。试试滑块、静音和输出设备。</p>
+        </div>
+      </section>
+
+      <section class="proof-strip" aria-label="产品特点" data-i18n-aria-label="accessibility.product_highlights">
+        <div><span>01</span><b data-i18n="proof.volume">按 App 独立调音量</b></div>
+        <div><span>02</span><b data-i18n="proof.routing">按 App 选择输出设备</b></div>
+        <div><span>03</span><b data-i18n="proof.menu_bar">菜单栏一步直达</b></div>
+        <div><span>04</span><b data-i18n="proof.no_kext">无需第三方内核扩展</b></div>
+      </section>
+
+      <section class="section capabilities" id="capabilities">
+        <div class="section-intro" data-reveal>
+          <p class="section-index" data-i18n="capabilities.index">01 / CONTROL</p>
+          <h2 data-i18n-html="capabilities.title">不是所有声音，<br />都该挤在同一条音量里。</h2>
+          <p data-i18n="capabilities.summary">
+            系统音量只有一个答案，真实工作流却从来不止一种声音。
+            AppVolume 让每个正在发声的 App 成为一条独立、清楚、可以立即调整的通道。
+          </p>
+        </div>
+
+        <div class="feature-ledger">
+          <article class="feature-story feature-volume" data-reveal>
+            <div class="feature-copy">
+              <span class="feature-number">01</span>
+              <p class="feature-kicker" data-i18n="volume.kicker">PER-APP VOLUME</p>
+              <h3 data-i18n-html="volume.title">只降低吵闹的那个，<br />而不是整个 Mac。</h3>
+              <p data-i18n="volume.summary">
+                通话保持清晰，背景音乐退到刚好的位置；临时网页视频出现时，也不用打乱整个系统音量。
+              </p>
+              <ul class="feature-points">
+                <li data-i18n="volume.point_1">0–100% 独立音量</li>
+                <li data-i18n="volume.point_2">一键静音与快速恢复</li>
+                <li data-i18n="volume.point_3">只显示正在输出音频的 App</li>
+              </ul>
+            </div>
+
+            <div class="level-visual" aria-hidden="true">
+              <div class="meter-ruler">
+                <span>100</span><span>75</span><span>50</span><span>25</span><span>0</span>
+              </div>
+              <div class="meter-channel">
+                <span class="meter-name">MEET</span>
+                <div class="meter-track"><span style="--level: 84%"></span></div>
+                <strong>84</strong>
+              </div>
+              <div class="meter-channel">
+                <span class="meter-name">MUSIC</span>
+                <div class="meter-track"><span style="--level: 46%"></span></div>
+                <strong>46</strong>
+              </div>
+              <div class="meter-channel">
+                <span class="meter-name">SAFARI</span>
+                <div class="meter-track"><span style="--level: 18%"></span></div>
+                <strong>18</strong>
+              </div>
+              <div class="meter-note" data-i18n="volume.note">三条声音，三个刚好的位置。</div>
+            </div>
+          </article>
+
+          <article class="feature-story feature-routing" data-reveal>
+            <div class="routing-map" aria-label="不同应用连接到不同音频设备的示意图" data-i18n-aria-label="accessibility.routing_diagram">
+              <div class="routing-column routing-sources">
+                <p data-i18n="routing.apps">APPS</p>
+                <div class="route-node"><span class="route-node-dot route-orange"></span>Music</div>
+                <div class="route-node"><span class="route-node-dot route-green"></span>Meet</div>
+                <div class="route-node"><span class="route-node-dot route-yellow"></span>Safari</div>
+              </div>
+              <svg class="routing-svg" viewBox="0 0 420 260" preserveAspectRatio="none" aria-hidden="true">
+                <path class="route-orange-line" d="M0 52 C150 52 210 196 420 196" />
+                <path class="route-green-line" d="M0 130 C160 130 200 60 420 60" />
+                <path class="route-yellow-line" d="M0 208 C160 208 210 130 420 130" />
+              </svg>
+              <div class="routing-column routing-devices">
+                <p data-i18n="routing.outputs">OUTPUTS</p>
+                <div class="device-node"><span>AirPods Pro</span><small>MEET</small></div>
+                <div class="device-node"><span>MacBook Pro</span><small>SAFARI</small></div>
+                <div class="device-node"><span>Studio Display</span><small>MUSIC</small></div>
+              </div>
+            </div>
+
+            <div class="feature-copy">
+              <span class="feature-number">02</span>
+              <p class="feature-kicker" data-i18n="routing.kicker">PER-APP ROUTING</p>
+              <h3 data-i18n-html="routing.title">让声音去它<br />真正应该去的地方。</h3>
+              <p data-i18n="routing.summary">
+                会议进入 AirPods，音乐留在桌面音箱，浏览器继续跟随系统默认设备。切换某个 App，不会牵动其他声音。
+              </p>
+              <ul class="feature-points">
+                <li data-i18n="routing.point_1">每个 App 独立选择输出设备</li>
+                <li data-i18n="routing.point_2">连接多个耳机、音箱或显示器</li>
+                <li data-i18n="routing.point_3">设备不可用时给出明确反馈</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section workflow" id="workflow">
+        <div class="workflow-heading" data-reveal>
+          <div>
+            <p class="section-index" data-i18n="workflow.index">02 / SCENARIOS</p>
+            <h2 data-i18n-html="workflow.title">从打断工作流，<br />变成一个自然动作。</h2>
+          </div>
+          <p data-i18n="workflow.summary">
+            AppVolume 常驻菜单栏，不要求你打开复杂的音频工作站。
+            点一下，调整需要变化的那一条，然后继续手上的事。
+          </p>
+        </div>
+
+        <div class="scenario-list">
+          <article class="scenario-card" data-reveal>
+            <span class="scenario-time">09:28</span>
+            <div class="scenario-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M6 9h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3zM23 14l6-4v14l-6-4z" /></svg>
+            </div>
+            <p class="scenario-label" data-i18n="scenario.meeting_label">晨会开始</p>
+            <h3 data-i18n="scenario.meeting_title">人声进耳机，音乐留在房间。</h3>
+            <div class="scenario-route"><span>Meet</span><i></i><strong>AirPods Pro</strong></div>
+            <div class="scenario-route"><span>Music</span><i></i><strong>Studio Display</strong></div>
+          </article>
+
+          <article class="scenario-card scenario-dark" data-reveal data-delay="80">
+            <span class="scenario-time">14:10</span>
+            <div class="scenario-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M7 5h18v22H7zM11 10h10M11 15h10M11 20h6" /></svg>
+            </div>
+            <p class="scenario-label" data-i18n="scenario.focus_label">进入专注</p>
+            <h3 data-i18n="scenario.focus_title">浏览器安静一点，代码提示照常清楚。</h3>
+            <div class="focus-levels" aria-hidden="true">
+              <div><span>Safari</span><i><b style="--focus-level: 20%"></b></i><strong>20</strong></div>
+              <div><span>Music</span><i><b style="--focus-level: 44%"></b></i><strong>44</strong></div>
+              <div><span>System</span><i><b style="--focus-level: 72%"></b></i><strong>72</strong></div>
+            </div>
+          </article>
+
+          <article class="scenario-card" data-reveal data-delay="160">
+            <span class="scenario-time">21:42</span>
+            <div class="scenario-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M8 13h16l4 10-4 3-5-5h-6l-5 5-4-3zM11 16v6M8 19h6M22 18h.1M25 21h.1" /></svg>
+            </div>
+            <p class="scenario-label" data-i18n="scenario.game_label">游戏与直播</p>
+            <h3 data-i18n="scenario.game_title">保留游戏力度，不让语音盖住队友。</h3>
+            <div class="scenario-route"><span>Game</span><i></i><strong>USB DAC</strong></div>
+            <div class="scenario-route"><span>Discord</span><i></i><strong>Headset</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="local-section" id="privacy">
+        <div class="local-orbit" aria-hidden="true">
+          <svg viewBox="0 0 640 640">
+            <circle cx="320" cy="320" r="214" />
+            <circle cx="320" cy="320" r="134" />
+            <path d="M106 320h428M320 106v428" />
+            <circle class="orbit-dot orbit-dot-one" cx="320" cy="106" r="8" />
+            <circle class="orbit-dot orbit-dot-two" cx="534" cy="320" r="8" />
+            <circle class="orbit-dot orbit-dot-three" cx="225" cy="440" r="8" />
+          </svg>
+          <div class="orbit-core">
+            <span class="brand-mark brand-mark-large">
+              <svg viewBox="0 0 32 32"><path d="M7 13.5h4l5-4v13l-5-4H7z" /><path d="M20 12.5c1.3 1.1 2 2.2 2 3.5s-.7 2.4-2 3.5" /><path d="M23 9.5c2.4 1.8 3.6 4 3.6 6.5S25.4 20.7 23 22.5" /></svg>
+            </span>
+            <strong>ON YOUR MAC</strong>
+          </div>
+        </div>
+
+        <div class="local-copy" data-reveal>
+          <p class="section-index" data-i18n="local.index">03 / LOCAL BY DESIGN</p>
+          <h2 data-i18n-html="local.title">你的声音，<br />留在你的 Mac。</h2>
+          <p data-i18n="local.summary">
+            AppVolume 面向本地实时音频处理设计，使用 macOS 原生 CoreAudio 能力，
+            不依赖第三方内核扩展。控制发生在菜单栏，音频不需要绕行云端。
+          </p>
+          <div class="local-facts">
+            <div><span>01</span><strong data-i18n="local.fact_1_title">原生 CoreAudio</strong><small data-i18n="local.fact_1_detail">为 macOS 14.2+ 构建</small></div>
+            <div><span>02</span><strong data-i18n="local.fact_2_title">无需 KEXT</strong><small data-i18n="local.fact_2_detail">不安装第三方内核扩展</small></div>
+            <div><span>03</span><strong data-i18n="local.fact_3_title">本地实时处理</strong><small data-i18n="local.fact_3_detail">不以云端处理作为工作前提</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="early-access" id="early-access">
+        <div class="early-access-grid" aria-hidden="true"></div>
+        <div class="early-access-copy" data-reveal>
+          <p class="section-index" data-i18n="cta.index">APPVOLUME FOR MAC</p>
+          <h2 data-i18n-html="cta.title">把 Mac 的声音，<br />调成你的工作方式。</h2>
+          <p data-i18n="cta.summary">7 天完整试用。喜欢，再一次性买断。</p>
+          <div class="availability-line">
+            <span class="availability-dot"></span>
+            <span data-i18n="cta.status">Mac App Store 版本准备中</span>
+          </div>
+          <button class="button button-light" type="button" data-release-open>
+            <span data-i18n="cta.button">查看发布状态</span>
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9h10M10 5l4 4-4 4" /></svg>
+          </button>
+        </div>
+
+        <div class="early-access-mark" aria-hidden="true">
+          <span>AV</span>
+          <svg viewBox="0 0 420 420">
+            <circle cx="210" cy="210" r="172" />
+            <path d="M38 210h344M210 38v344" />
+            <path d="M89 89l242 242M331 89 89 331" />
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32"><path d="M7 13.5h4l5-4v13l-5-4H7z" /><path d="M20 12.5c1.3 1.1 2 2.2 2 3.5s-.7 2.4-2 3.5" /><path d="M23 9.5c2.4 1.8 3.6 4 3.6 6.5S25.4 20.7 23 22.5" /></svg>
+        </span>
+        <span>AppVolume</span>
+      </a>
+      <p data-i18n="footer.tagline">精确控制每一条 App 音频。</p>
+      <div class="footer-meta">
+        <span>macOS 14.2+</span>
+        <span>© <span data-current-year></span> AppVolume</span>
+      </div>
+    </footer>
+
+    <dialog class="release-dialog" data-release-dialog aria-labelledby="release-dialog-title">
+      <form method="dialog">
+        <button class="dialog-close" type="submit" aria-label="关闭发布状态" data-i18n-aria-label="dialog.close_label">
+          <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M4 4l10 10M14 4 4 14" /></svg>
+        </button>
+        <span class="dialog-status"><i></i><span data-i18n="dialog.status_label">DEVELOPMENT STATUS</span></span>
+        <h2 id="release-dialog-title" data-i18n="dialog.title">AppVolume 正在准备发布。</h2>
+        <p data-i18n="dialog.summary">
+          核心的按 App 音量与输出路由能力已经进入产品化阶段。目前正在继续验证设备兼容性、系统音频授权与发布构建。
+        </p>
+        <div class="dialog-progress" aria-label="当前开发进度" data-i18n-aria-label="dialog.progress_label">
+          <div class="progress-complete"><span data-i18n="dialog.progress_1">界面与基础控制</span><strong data-i18n="dialog.complete">完成</strong></div>
+          <div class="progress-active"><span data-i18n="dialog.progress_2">音频设备兼容性</span><strong data-i18n="dialog.testing">验证中</strong></div>
+          <div><span data-i18n="dialog.progress_3">Mac App Store 发布</span><strong data-i18n="dialog.pending">待完成</strong></div>
+        </div>
+        <button class="button button-primary dialog-button" type="submit" data-i18n="dialog.close">知道了</button>
+      </form>
+    </dialog>
+  </body>
+</html>
