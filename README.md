@@ -12,6 +12,8 @@ python3 -m http.server 4173 --directory Website
 
 然后访问 `http://127.0.0.1:4173/`。
 
+更新日志模块可通过 `http://127.0.0.1:4173/changelog/` 直接访问；部署到 GitHub Pages 后对应 `https://appvolume-audio.github.io/changelog/`。
+
 ## 内容边界
 
 - 页面依据当前 SwiftUI、CoreAudio、StoreKit 与本地化实现编写。

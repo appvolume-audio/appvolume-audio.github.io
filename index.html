@@ -33,6 +33,7 @@
         <a href="#capabilities" data-i18n="nav.capabilities">核心能力</a>
         <a href="#workflow" data-i18n="nav.scenarios">使用场景</a>
         <a href="#privacy" data-i18n="nav.local">本地处理</a>
+        <a href="#changelog" data-i18n="nav.changelog">更新日志</a>
       </nav>
 
       <div class="header-actions">
@@ -419,6 +420,82 @@
             <div><span>01</span><strong data-i18n="local.fact_1_title">原生 CoreAudio</strong><small data-i18n="local.fact_1_detail">为 macOS 14.2+ 构建</small></div>
             <div><span>02</span><strong data-i18n="local.fact_2_title">无需 KEXT</strong><small data-i18n="local.fact_2_detail">不安装第三方内核扩展</small></div>
             <div><span>03</span><strong data-i18n="local.fact_3_title">本地实时处理</strong><small data-i18n="local.fact_3_detail">不以云端处理作为工作前提</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="changelog-section" id="changelog">
+        <div class="changelog-layout">
+          <div class="changelog-copy" data-reveal>
+            <p class="section-index" data-i18n="changelog.index">04 / 更新日志</p>
+            <h2 data-i18n-html="changelog.title">下一步，让每条声音<br />更听你的。</h2>
+            <p data-i18n="changelog.summary">
+              这里公开记录正在考虑中的功能方向。没有虚构日期，只有明确的下一步。
+            </p>
+          </div>
+
+          <div class="roadmap-column">
+            <div class="roadmap-ledger" aria-label="规划中的功能" data-i18n-aria-label="changelog.list_label" data-reveal data-delay="80">
+              <div class="roadmap-meta" aria-hidden="true">
+                <span>APPVOLUME / ROADMAP</span>
+                <span>02 ITEMS</span>
+              </div>
+
+              <article class="roadmap-item">
+                <span class="roadmap-number">01</span>
+                <div class="roadmap-status">
+                  <i aria-hidden="true"></i>
+                  <span data-i18n="changelog.status">规划中</span>
+                </div>
+                <h3 data-i18n="changelog.item_shortcut">支持快捷键静音当前 App</h3>
+                <span class="roadmap-icon" aria-hidden="true">
+                  <svg viewBox="0 0 34 34">
+                    <rect x="5" y="7" width="24" height="20" rx="4" />
+                    <path d="M10 13h3M16 13h3M22 13h2M10 18h3M16 18h8M10 23h14" />
+                  </svg>
+                </span>
+              </article>
+
+              <article class="roadmap-item">
+                <span class="roadmap-number">02</span>
+                <div class="roadmap-status">
+                  <i aria-hidden="true"></i>
+                  <span data-i18n="changelog.status">规划中</span>
+                </div>
+                <h3 data-i18n="changelog.item_eq">EQ 均衡器功能</h3>
+                <span class="roadmap-icon" aria-hidden="true">
+                  <svg viewBox="0 0 34 34">
+                    <path d="M7 25V14M17 25V8M27 25V18" />
+                    <circle cx="7" cy="11" r="3" />
+                    <circle cx="17" cy="19" r="3" />
+                    <circle cx="27" cy="14" r="3" />
+                  </svg>
+                </span>
+              </article>
+            </div>
+
+            <aside class="roadmap-contact" data-reveal data-delay="140">
+              <div>
+                <p data-i18n="changelog.feedback_label">你的输入 / 下一条通道</p>
+                <h3 data-i18n="changelog.feedback_title">还想要什么新功能？</h3>
+                <p data-i18n="changelog.feedback_summary">告诉我你的使用场景，需求会直接进入产品规划参考。</p>
+              </div>
+              <a
+                class="roadmap-contact-link"
+                href="mailto:zhuluran@gmail.com?subject=AppVolume%20功能建议"
+                data-i18n-href="changelog.email_href"
+                aria-label="发送 AppVolume 功能建议邮件"
+                data-i18n-aria-label="changelog.email_label"
+              >
+                <span>
+                  <strong data-i18n="changelog.email_action">发送功能建议</strong>
+                  <small>zhuluran@gmail.com</small>
+                </span>
+                <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M3 5h14v10H3zM3 6l7 5 7-5" />
+                </svg>
+              </a>
+            </aside>
           </div>
         </div>
       </section>

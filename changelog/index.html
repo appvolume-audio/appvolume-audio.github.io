@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content="0; url=../#changelog" />
+    <title>AppVolume — Changelog</title>
+    <script>
+      const prefersChinese = (navigator.languages?.length ? navigator.languages : [navigator.language])
+        .some((language) => language?.toLowerCase().startsWith("zh"));
+      document.documentElement.lang = prefersChinese ? "zh-CN" : "en";
+      document.title = prefersChinese ? "AppVolume — 更新日志" : "AppVolume — Changelog";
+      const changelogUrl = new URL("../", window.location.href);
+      changelogUrl.hash = "changelog";
+      window.location.replace(changelogUrl);
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <a href="../#changelog">打开 AppVolume 更新日志 / Open the AppVolume changelog</a>
+    </noscript>
+  </body>
+</html>

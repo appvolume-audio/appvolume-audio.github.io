@@ -78,6 +78,10 @@ const applyTranslations = (locale) => {
     element.setAttribute("aria-label", translate(element.dataset.i18nAriaLabel));
   });
 
+  document.querySelectorAll("[data-i18n-href]").forEach((element) => {
+    element.setAttribute("href", translate(element.dataset.i18nHref));
+  });
+
   document.dispatchEvent(
     new CustomEvent("appvolume:languagechange", { detail: { locale } })
   );
