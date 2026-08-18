@@ -114,8 +114,6 @@ applyTranslations(currentLocale);
 
 const siteHeader = document.querySelector("[data-site-header]");
 const revealElements = document.querySelectorAll("[data-reveal]");
-const releaseDialog = document.querySelector("[data-release-dialog]");
-const releaseButtons = document.querySelectorAll("[data-release-open]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const updateHeader = () => {
@@ -264,17 +262,6 @@ const createToast = () => {
 };
 
 document.querySelector(".settings-button")?.addEventListener("click", createToast);
-
-releaseButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (typeof releaseDialog?.showModal === "function") releaseDialog.showModal();
-  });
-});
-
-releaseDialog?.addEventListener("click", (event) => {
-  if (event.target !== releaseDialog) return;
-  releaseDialog.close();
-});
 
 document.querySelectorAll("[data-current-year]").forEach((element) => {
   element.textContent = String(new Date().getFullYear());
