@@ -17,7 +17,7 @@ python3 -m http.server 4173 --directory Website
 ## 内容边界
 
 - 页面依据当前 SwiftUI、CoreAudio、StoreKit 与本地化实现编写。
-- 当前发布基线为 AppVolume 1.0.0，发布日期为 2026-08-14。
+- 当前发布基线为 AppVolume 1.0.1（Build 3），公开发布时间为 2026-08-18 17:40:36 UTC（北京时间 2026-08-19 01:40:36）。
 - 页头和底部下载按钮均指向正式 Mac App Store 商品页：<https://apps.apple.com/app/appvolume/id6800678477>。
 - 免费版可控制最多两个活跃 App 的独立音量与静音；应用级输出路由和不限 App 控制属于一次性买断的 AppVolume Pro。
 - 更新日志同时展示已发布版本和公开规划。规划项不代表具体交付版本或日期承诺。
