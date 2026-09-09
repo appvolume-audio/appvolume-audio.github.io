@@ -6,7 +6,7 @@
     <meta
       data-i18n-content="meta.description"
       name="description"
-      content="AppVolume 是一款已在 Mac App Store 上线的 macOS 菜单栏音频工具，可分别调节不同 App 的音量并选择独立输出设备；免费版支持最多 2 个 App 音量控制。"
+      content="AppVolume 是一款已在 Mac App Store 上线的 macOS 菜单栏音频工具，可分别调节不同 App 的音量、增强到最高 200% 并选择独立输出设备；免费版支持最多 2 个 App。"
     />
     <meta name="theme-color" content="#f3f0e8" />
     <title data-i18n="meta.title">AppVolume — 每个 App，自己的音量与声场</title>
@@ -38,6 +38,19 @@
       </nav>
 
       <div class="header-actions">
+        <a
+          class="header-contact"
+          href="mailto:zhuluran@gmail.com?subject=AppVolume%20咨询"
+          data-i18n-href="contact.email_href"
+          aria-label="发送邮件联系 AppVolume"
+          data-i18n-aria-label="contact.email_label"
+        >
+          <svg viewBox="0 0 18 18" aria-hidden="true">
+            <path d="M2.5 4.5h13v9h-13zM3 5l6 4.4L15 5" />
+          </svg>
+          <span data-i18n="nav.contact">联系我们</span>
+        </a>
+
         <label class="language-picker">
           <span class="sr-only" data-i18n="language.label">选择语言</span>
           <svg viewBox="0 0 18 18" aria-hidden="true">
@@ -93,7 +106,7 @@
           <ul class="compatibility-list" aria-label="产品信息" data-i18n-aria-label="accessibility.product_info">
             <li>macOS 14.2+</li>
             <li data-i18n="hero.menu_bar">菜单栏常驻</li>
-            <li data-i18n="hero.free_tier">免费控制 2 个 App 音量</li>
+            <li data-i18n="hero.free_tier">免费控制 2 个 App，最高增强 200%</li>
           </ul>
         </div>
 
@@ -165,16 +178,20 @@
                     <h3>Music</h3>
                     <p class="route-summary" data-route-device="macbook" data-i18n="route.to_macbook">到 MacBook Pro 扬声器</p>
                   </div>
-                  <output class="app-volume-value">48%</output>
+                  <output class="app-volume-value">138%</output>
                 </div>
                 <div class="app-controls">
                   <button class="mute-button" type="button" aria-label="将 Music 静音" aria-pressed="false">
                     <svg class="sound-on" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12 6c1 .8 1.5 1.8 1.5 3S13 11.2 12 12M14.3 3.8c1.7 1.4 2.6 3.1 2.6 5.2s-.9 3.8-2.6 5.2" /></svg>
                     <svg class="sound-off" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12.5 6.5l4 5M16.5 6.5l-4 5" /></svg>
                   </button>
-                  <input class="volume-slider app-slider" type="range" min="0" max="100" value="48" aria-label="Music 音量" />
+                  <div class="gain-control">
+                    <input class="volume-slider app-slider" type="range" min="0" max="200" value="138" aria-label="Music 应用增益" />
+                    <div class="gain-scale" aria-hidden="true"><span>0%</span><span>100%</span><span>200%</span></div>
+                    <div class="gain-status" data-gain-status aria-live="polite"></div>
+                  </div>
                   <label class="device-select-wrap">
-                    <span class="sr-only">Music 输出设备</span>
+                    <span class="sr-only" data-app-output-label></span>
                     <select class="device-select" aria-label="Music 输出设备" data-app-name="Music">
                       <option value="macbook" data-i18n="device.macbook_speakers">MacBook Pro 扬声器</option>
                       <option value="airpods">AirPods Pro</option>
@@ -200,9 +217,13 @@
                     <svg class="sound-on" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12 6c1 .8 1.5 1.8 1.5 3S13 11.2 12 12M14.3 3.8c1.7 1.4 2.6 3.1 2.6 5.2s-.9 3.8-2.6 5.2" /></svg>
                     <svg class="sound-off" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12.5 6.5l4 5M16.5 6.5l-4 5" /></svg>
                   </button>
-                  <input class="volume-slider app-slider" type="range" min="0" max="100" value="82" aria-label="Meet 音量" />
+                  <div class="gain-control">
+                    <input class="volume-slider app-slider" type="range" min="0" max="200" value="82" aria-label="Meet 应用增益" />
+                    <div class="gain-scale" aria-hidden="true"><span>0%</span><span>100%</span><span>200%</span></div>
+                    <div class="gain-status" data-gain-status aria-live="polite"></div>
+                  </div>
                   <label class="device-select-wrap">
-                    <span class="sr-only">Meet 输出设备</span>
+                    <span class="sr-only" data-app-output-label></span>
                     <select class="device-select" aria-label="Meet 输出设备" data-app-name="Meet">
                       <option value="airpods">AirPods Pro</option>
                       <option value="macbook" data-i18n="device.macbook_speakers">MacBook Pro 扬声器</option>
@@ -228,9 +249,13 @@
                     <svg class="sound-on" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12 6c1 .8 1.5 1.8 1.5 3S13 11.2 12 12M14.3 3.8c1.7 1.4 2.6 3.1 2.6 5.2s-.9 3.8-2.6 5.2" /></svg>
                     <svg class="sound-off" viewBox="0 0 18 18" aria-hidden="true"><path d="M2.5 7h3l3.5-3v10L5.5 11h-3zM12.5 6.5l4 5M16.5 6.5l-4 5" /></svg>
                   </button>
-                  <input class="volume-slider app-slider" type="range" min="0" max="100" value="18" aria-label="Safari 音量" />
+                  <div class="gain-control">
+                    <input class="volume-slider app-slider" type="range" min="0" max="200" value="18" aria-label="Safari 应用增益" />
+                    <div class="gain-scale" aria-hidden="true"><span>0%</span><span>100%</span><span>200%</span></div>
+                    <div class="gain-status" data-gain-status aria-live="polite"></div>
+                  </div>
                   <label class="device-select-wrap">
-                    <span class="sr-only">Safari 输出设备</span>
+                    <span class="sr-only" data-app-output-label></span>
                     <select class="device-select" aria-label="Safari 输出设备" data-app-name="Safari">
                       <option value="system" data-i18n="device.system_default">系统默认设备</option>
                       <option value="airpods">AirPods Pro</option>
@@ -275,13 +300,13 @@
           <article class="feature-story feature-volume" data-reveal>
             <div class="feature-copy">
               <span class="feature-number">01</span>
-              <p class="feature-kicker" data-i18n="volume.kicker">PER-APP VOLUME</p>
+              <p class="feature-kicker" data-i18n="volume.kicker">PER-APP VOLUME &amp; BOOST</p>
               <h3 data-i18n-html="volume.title">只降低吵闹的那个，<br />而不是整个 Mac。</h3>
               <p data-i18n="volume.summary">
                 通话保持清晰，背景音乐退到刚好的位置；临时网页视频出现时，也不用打乱整个系统音量。
               </p>
               <ul class="feature-points">
-                <li data-i18n="volume.point_1">0–100% 独立音量</li>
+                <li data-i18n="volume.point_1">0–200% 应用增益，100% 为原始音量</li>
                 <li data-i18n="volume.point_2">一键静音与快速恢复</li>
                 <li data-i18n="volume.point_3">只显示正在输出音频的 App</li>
               </ul>
@@ -436,9 +461,9 @@
         <div class="changelog-layout">
           <div class="changelog-copy" data-reveal>
             <p class="section-index" data-i18n="changelog.index">04 / 更新日志</p>
-            <h2 data-i18n-html="changelog.title">1.0.3 已上线。<br />稳定如常，继续掌控每一条声音。</h2>
+            <h2 data-i18n-html="changelog.title">1.0.3 已上线。<br />1.0.4 正在把声音推得更远。</h2>
             <p data-i18n="changelog.summary">
-              1.0.3 已于 2026 年 8 月 30 日上线。这是一次维护版本，核心音频功能保持不变；你仍可独立控制每个 App 的音量、自动恢复已保存设置，并用全局快捷键静音当前 App。这里同时记录已发布版本和正在规划的方向；规划项不代表具体交付日期承诺。
+              1.0.3 已于 2026 年 8 月 30 日上线。这是一次维护版本，核心音频功能保持稳定；你仍可独立控制每个 App 的音量、自动恢复已保存设置，并用全局快捷键静音当前 App。1.0.4 正在开发，加入最多两个免费 App 的 0–200% 应用增益和默认峰值保护。这里同时记录已发布版本和正在规划的方向；规划项不代表具体交付日期承诺。
             </p>
           </div>
 
@@ -446,11 +471,28 @@
             <div class="roadmap-ledger" aria-label="发布记录与规划中的功能" data-i18n-aria-label="changelog.list_label" data-reveal data-delay="80">
               <div class="roadmap-meta" aria-hidden="true">
                 <span>APPVOLUME / RELEASES + ROADMAP</span>
-                <span>05 ITEMS</span>
+                <span>06 ITEMS</span>
               </div>
 
               <article class="roadmap-item">
                 <span class="roadmap-number">01</span>
+                <div class="roadmap-status">
+                  <i aria-hidden="true"></i>
+                  <span data-i18n="changelog.in_development_status">开发中</span>
+                </div>
+                <h3 data-i18n="changelog.item_release_104">1.0.4 · 应用增益 0–200%、默认峰值保护（开发中）</h3>
+                <span class="roadmap-icon" aria-hidden="true">
+                  <svg viewBox="0 0 34 34">
+                    <path d="M7 25V14M17 25V8M27 25V18" />
+                    <circle cx="7" cy="11" r="3" />
+                    <circle cx="17" cy="19" r="3" />
+                    <circle cx="27" cy="14" r="3" />
+                  </svg>
+                </span>
+              </article>
+
+              <article class="roadmap-item">
+                <span class="roadmap-number">02</span>
                 <div class="roadmap-status is-released">
                   <i aria-hidden="true"></i>
                   <span data-i18n="changelog.release_status">已发布</span>
@@ -465,7 +507,7 @@
               </article>
 
               <article class="roadmap-item">
-                <span class="roadmap-number">02</span>
+                <span class="roadmap-number">03</span>
                 <div class="roadmap-status is-released">
                   <i aria-hidden="true"></i>
                   <span data-i18n="changelog.release_status">已发布</span>
@@ -480,7 +522,7 @@
               </article>
 
               <article class="roadmap-item">
-                <span class="roadmap-number">03</span>
+                <span class="roadmap-number">04</span>
                 <div class="roadmap-status is-released">
                   <i aria-hidden="true"></i>
                   <span data-i18n="changelog.release_status">已发布</span>
@@ -495,7 +537,7 @@
               </article>
 
               <article class="roadmap-item">
-                <span class="roadmap-number">04</span>
+                <span class="roadmap-number">05</span>
                 <div class="roadmap-status is-released">
                   <i aria-hidden="true"></i>
                   <span data-i18n="changelog.release_status">已发布</span>
@@ -510,7 +552,7 @@
               </article>
 
               <article class="roadmap-item">
-                <span class="roadmap-number">05</span>
+                <span class="roadmap-number">06</span>
                 <div class="roadmap-status">
                   <i aria-hidden="true"></i>
                   <span data-i18n="changelog.exploring_status">规划中</span>

@@ -193,6 +193,40 @@ svg {
   gap: 8px;
 }
 
+.header-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 7px;
+  min-height: 36px;
+  padding: 8px 11px;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 140ms var(--ease-out);
+}
+
+.header-contact svg {
+  width: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.header-contact:active {
+  transform: scale(0.97);
+}
+
 .language-picker {
   position: relative;
   display: flex;
@@ -868,6 +902,57 @@ svg {
   align-items: center;
   gap: 8px;
   margin: 8px 0 0 39px;
+}
+
+.gain-control {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.gain-control::after {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 1px;
+  height: 8px;
+  background: rgba(25, 27, 31, 0.36);
+  content: "";
+  pointer-events: none;
+  transform: translateX(-0.5px);
+}
+
+.gain-scale {
+  display: flex;
+  justify-content: space-between;
+  color: #999b96;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 7px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.gain-scale span:nth-child(2) {
+  color: #686a66;
+}
+
+.gain-status {
+  min-height: 10px;
+  overflow: hidden;
+  color: #858781;
+  font-size: 7px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gain-status[data-state="boost"] {
+  color: #b26a18;
+}
+
+.gain-status[data-state="unity"] {
+  color: #686a66;
 }
 
 .mute-button {
@@ -2007,6 +2092,12 @@ svg {
     background: #303236;
   }
 
+  .header-contact:hover {
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.72);
+    border-color: var(--signal);
+  }
+
   .button-primary:hover {
     background: var(--signal-dark);
     border-color: var(--signal-dark);
@@ -2172,6 +2263,13 @@ svg {
 
   .header-cta {
     padding: 8px 10px;
+  }
+
+  .header-contact {
+    min-height: 34px;
+    padding: 7px 9px;
+    gap: 6px;
+    font-size: 11px;
   }
 
   .language-picker {
@@ -2465,7 +2563,17 @@ svg {
 
 @media (max-width: 390px) {
   .header-actions {
-    gap: 6px;
+    gap: 4px;
+  }
+
+  .header-contact {
+    min-height: 32px;
+    padding: 6px 7px;
+    font-size: 10px;
+  }
+
+  .header-contact svg {
+    display: none;
   }
 
   .header-cta svg {
@@ -2473,10 +2581,31 @@ svg {
   }
 
   .header-cta {
-    max-width: 142px;
+    max-width: 82px;
+    padding: 8px;
+    font-size: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .language-picker {
+    width: 32px;
+    height: 32px;
+  }
+
+  .language-picker > svg {
+    left: 8px;
+  }
+
+  .brand {
+    gap: 7px;
+    font-size: 14px;
+  }
+
+  .brand-mark {
+    width: 27px;
+    height: 27px;
   }
 
   .product-window {

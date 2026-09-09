@@ -171,9 +171,11 @@ if (masterSlider && masterOutput) {
 document.querySelectorAll("[data-app-row]").forEach((row) => {
   const slider = row.querySelector(".app-slider");
   const output = row.querySelector(".app-volume-value");
+  const gainStatus = row.querySelector("[data-gain-status]");
   const muteButton = row.querySelector(".mute-button");
   const deviceSelect = row.querySelector(".device-select");
   const routeSummary = row.querySelector(".route-summary");
+  const outputLabel = row.querySelector("[data-app-output-label]");
   const appName = row.querySelector("h3")?.textContent?.trim() || "App";
   const accent = row.dataset.accent || "#f15a37";
 
@@ -190,14 +192,37 @@ document.querySelectorAll("[data-app-row]").forEach((row) => {
     );
     slider.setAttribute("aria-label", translate("ui.app_volume", { app: appName }));
     deviceSelect.setAttribute("aria-label", translate("ui.app_output", { app: appName }));
+    if (outputLabel) {
+      outputLabel.textContent = translate("ui.app_output", { app: appName });
+    }
   };
 
   const updateAppVolume = ({ announceChange = false } = {}) => {
     setRangeProgress(slider, accent);
     const value = Number(slider.value);
-    const displayValue = value === 0 ? translate("ui.muted") : `${value}%`;
+    // A zero gain is distinct from the explicit mute button. Keep the
+    // percentage visible so the demo teaches the same semantics as the app.
+    const displayValue = `${value}%`;
     output.value = displayValue;
     output.textContent = displayValue;
+
+    if (gainStatus) {
+      if (value > 100) {
+        const decibels = 20 * Math.log10(value / 100);
+        const formattedDecibels = new Intl.NumberFormat(currentLocale, {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1
+        }).format(decibels);
+        gainStatus.textContent = `${translate("ui.boost")} · +${formattedDecibels} dB · ${translate("ui.peak_protection")}`;
+        gainStatus.dataset.state = "boost";
+      } else if (value === 100) {
+        gainStatus.textContent = translate("ui.unity_gain");
+        gainStatus.dataset.state = "unity";
+      } else {
+        gainStatus.textContent = "";
+        gainStatus.dataset.state = "attenuation";
+      }
+    }
 
     if (value > 0 && muteButton.getAttribute("aria-pressed") === "true") {
       muteButton.setAttribute("aria-pressed", "false");
