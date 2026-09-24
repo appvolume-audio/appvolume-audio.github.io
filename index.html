@@ -33,6 +33,7 @@
       <nav class="primary-nav" aria-label="主要导航" data-i18n-aria-label="accessibility.primary_nav">
         <a href="#capabilities" data-i18n="nav.capabilities">核心能力</a>
         <a href="#workflow" data-i18n="nav.scenarios">使用场景</a>
+        <a href="#quick-mix" data-i18n="nav.quick_mix">Quick Mix</a>
         <a href="#privacy" data-i18n="nav.local">本地处理</a>
         <a href="#changelog" data-i18n="nav.changelog">更新日志</a>
       </nav>
@@ -87,6 +88,7 @@
             <span class="live-dot" aria-hidden="true"></span>
             <span data-i18n="hero.eyebrow">macOS 音频控制，终于各就各位</span>
           </p>
+          <p class="release-tag" data-i18n="hero.release">1.0.6 预览 · Quick Mix Lite</p>
           <h1 data-i18n-html="hero.title">每个 App，<br />自己的音量与声场。</h1>
           <p class="hero-summary" data-i18n="hero.summary">
             音乐留在音箱，会议只进耳机；浏览器安静一点，游戏保留力度。
@@ -424,6 +426,140 @@
         </div>
       </section>
 
+      <section class="section quick-mix-section" id="quick-mix">
+        <div class="quick-mix-heading" data-reveal>
+          <div>
+            <p class="section-index" data-i18n="quick_mix.index">03 / QUICK MIX LITE</p>
+            <h2 data-i18n-html="quick_mix.title">把常用的声音状态，<br />收进一个按钮。</h2>
+          </div>
+          <p data-i18n="quick_mix.summary">
+            会议、专注、游戏，各有一套刚好的音量。固定常用 App，临时静音后自动恢复，下一次打开菜单栏就能继续。
+          </p>
+        </div>
+
+        <div class="quick-mix-layout">
+          <article class="quick-mix-panel" data-reveal>
+            <div class="quick-mix-panel-head">
+              <div>
+                <p class="feature-kicker" data-i18n="quick_mix.panel_kicker">ONE CLICK MIX</p>
+                <h3 data-i18n="quick_mix.panel_title">Quick Mix Lite</h3>
+              </div>
+              <span class="quick-mix-version" data-i18n="quick_mix.preview_badge">1.0.6 预览</span>
+            </div>
+
+            <div class="quick-mix-tabs" role="tablist" aria-label="Quick Mix 场景" data-i18n-aria-label="quick_mix.tab_label">
+              <button class="quick-mix-tab is-active" type="button" role="tab" aria-selected="true" data-mode="meeting" data-title-key="quick_mix.meeting_title" data-summary-key="quick_mix.meeting_summary" data-items="quick_mix.meeting_item_1|quick_mix.meeting_item_2|quick_mix.meeting_item_3">
+                <span class="quick-mix-tab-icon" aria-hidden="true">01</span>
+                <span data-i18n="quick_mix.meeting_label">会议</span>
+              </button>
+              <button class="quick-mix-tab" type="button" role="tab" aria-selected="false" data-mode="focus" data-title-key="quick_mix.focus_title" data-summary-key="quick_mix.focus_summary" data-items="quick_mix.focus_item_1|quick_mix.focus_item_2|quick_mix.focus_item_3">
+                <span class="quick-mix-tab-icon" aria-hidden="true">02</span>
+                <span data-i18n="quick_mix.focus_label">专注</span>
+              </button>
+              <button class="quick-mix-tab" type="button" role="tab" aria-selected="false" data-mode="gaming" data-title-key="quick_mix.gaming_title" data-summary-key="quick_mix.gaming_summary" data-items="quick_mix.gaming_item_1|quick_mix.gaming_item_2|quick_mix.gaming_item_3">
+                <span class="quick-mix-tab-icon" aria-hidden="true">03</span>
+                <span data-i18n="quick_mix.gaming_label">游戏</span>
+              </button>
+            </div>
+
+            <div class="quick-mix-mode" data-quick-mix-mode>
+              <p class="quick-mix-mode-label" data-i18n="quick_mix.mode_label">当前模式</p>
+              <h4 data-quick-mix-title data-i18n="quick_mix.meeting_title">把会议送进耳机，音乐退到刚好。</h4>
+              <p data-quick-mix-summary data-i18n="quick_mix.meeting_summary">Meet 保持清晰，Music 自动降到背景音量，Safari 暂时静音。</p>
+              <ul class="quick-mix-mode-list" data-quick-mix-list>
+                <li data-i18n="quick_mix.meeting_item_1">Meet · 85% · AirPods Pro</li>
+                <li data-i18n="quick_mix.meeting_item_2">Music · 20% · Studio Display</li>
+                <li data-i18n="quick_mix.meeting_item_3">Safari · 暂时静音</li>
+              </ul>
+              <div class="quick-mix-apply-row">
+                <button class="button button-primary quick-mix-apply" type="button" data-i18n="quick_mix.apply">应用会议模式</button>
+                <span class="quick-mix-apply-status" data-quick-mix-status role="status" aria-live="polite" data-i18n="quick_mix.ready">准备就绪</span>
+              </div>
+            </div>
+          </article>
+
+          <div class="quick-mix-side">
+            <article class="quick-mix-card pinned-apps-card" data-reveal data-delay="80">
+              <div class="quick-mix-card-head">
+                <div>
+                  <p class="feature-kicker" data-i18n="quick_mix.pinned_kicker">PINNED APPS</p>
+                  <h3 data-i18n="quick_mix.pinned_title">常用 App，一直在手边。</h3>
+                </div>
+                <span class="card-count">03</span>
+              </div>
+              <p class="quick-mix-card-summary" data-i18n="quick_mix.pinned_summary">固定后，即使暂时没有声音，它们也会留在菜单栏面板里。</p>
+              <ul class="pinned-app-list" aria-label="固定的常用 App" data-i18n-aria-label="quick_mix.pinned_aria">
+                <li class="pinned-app-row is-pinned" data-pinned-app="Safari">
+                  <span class="pinned-app-dot pinned-app-dot-safari" aria-hidden="true"></span>
+                  <span class="pinned-app-name">Safari</span>
+                  <span class="pinned-app-state" data-i18n="quick_mix.pinned">已固定</span>
+                  <button class="pin-toggle" type="button" aria-pressed="true" data-i18n-aria-label="quick_mix.unpin_app" data-app="Safari">
+                    <span aria-hidden="true">⌖</span>
+                  </button>
+                </li>
+                <li class="pinned-app-row is-pinned" data-pinned-app="Music">
+                  <span class="pinned-app-dot pinned-app-dot-music" aria-hidden="true"></span>
+                  <span class="pinned-app-name">Music</span>
+                  <span class="pinned-app-state" data-i18n="quick_mix.pinned">已固定</span>
+                  <button class="pin-toggle" type="button" aria-pressed="true" data-i18n-aria-label="quick_mix.unpin_app" data-app="Music">
+                    <span aria-hidden="true">⌖</span>
+                  </button>
+                </li>
+                <li class="pinned-app-row is-pinned" data-pinned-app="Meet">
+                  <span class="pinned-app-dot pinned-app-dot-meet" aria-hidden="true"></span>
+                  <span class="pinned-app-name">Meet</span>
+                  <span class="pinned-app-state" data-i18n="quick_mix.pinned">已固定</span>
+                  <button class="pin-toggle" type="button" aria-pressed="true" data-i18n-aria-label="quick_mix.unpin_app" data-app="Meet">
+                    <span aria-hidden="true">⌖</span>
+                  </button>
+                </li>
+              </ul>
+            </article>
+
+            <article class="quick-mix-card temporary-mute-card" data-reveal data-delay="140">
+              <div class="quick-mix-card-head">
+                <div>
+                  <p class="feature-kicker" data-i18n="quick_mix.temp_kicker">TEMPORARY MUTE</p>
+                  <h3 data-i18n="quick_mix.temp_title">只安静一会儿。</h3>
+                </div>
+                <span class="temp-mute-symbol" aria-hidden="true">/ /</span>
+              </div>
+              <p class="quick-mix-card-summary" data-i18n="quick_mix.temp_summary">临时压低广告、通知或背景音，不改变你保存好的长期音量。</p>
+              <div class="temp-mute-actions" role="group" aria-label="临时静音时长" data-i18n-aria-label="quick_mix.temp_group_label">
+                <button type="button" data-temp-mute="30" data-i18n="quick_mix.temp_30">静音 30 秒</button>
+                <button type="button" data-temp-mute="60" data-i18n="quick_mix.temp_60">静音 1 分钟</button>
+                <button type="button" data-temp-mute="0" data-i18n="quick_mix.temp_restore">立即恢复</button>
+              </div>
+              <p class="temp-mute-status" data-temp-mute-status role="status" aria-live="polite" data-i18n="quick_mix.temp_ready">准备临时静音</p>
+            </article>
+
+            <article class="quick-mix-pro-card" data-reveal data-delay="200">
+              <div class="pro-lock" aria-hidden="true">PRO</div>
+              <div>
+                <p class="feature-kicker" data-i18n="quick_mix.pro_kicker">WHEN YOU NEED MORE</p>
+                <h3 data-i18n="quick_mix.pro_title">第三个 App，正是升级的理由。</h3>
+                <p data-i18n="quick_mix.pro_summary">免费版可以先体验 Quick Mix Lite；同时控制更多 App，或把每个 App 送到不同设备时，Pro 一次买断即可解锁。</p>
+                <ul class="quick-mix-pro-points">
+                  <li data-i18n="quick_mix.pro_point_1">不限 App 音量与静音</li>
+                  <li data-i18n="quick_mix.pro_point_2">应用级输出路由</li>
+                </ul>
+                <a class="text-link" href="#download" data-i18n-html="quick_mix.pro_cta">查看 Pro 方案 <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="rating-request" data-rating-request hidden role="status" aria-live="polite">
+          <div class="rating-stars" aria-hidden="true">★★★★★</div>
+          <div>
+            <p class="feature-kicker" data-i18n="quick_mix.rating_kicker">A SMALL THANK YOU</p>
+            <h3 data-i18n="quick_mix.rating_title">如果这个场景帮到你，留下一句评分吧。</h3>
+            <p data-i18n="quick_mix.rating_summary">真实的使用反馈，会帮助更多 Mac 用户找到自己的声音设置。</p>
+          </div>
+              <a class="rating-link" href="https://apps.apple.com/app/appvolume/id6800678477" target="_blank" rel="noopener noreferrer" data-i18n-html="quick_mix.rating_action">去 Mac App Store 评分 <span aria-hidden="true">↗</span></a>
+        </aside>
+      </section>
+
       <section class="local-section" id="privacy">
         <div class="local-orbit" aria-hidden="true">
           <svg viewBox="0 0 640 640">
@@ -443,7 +579,7 @@
         </div>
 
         <div class="local-copy" data-reveal>
-          <p class="section-index" data-i18n="local.index">03 / LOCAL BY DESIGN</p>
+          <p class="section-index" data-i18n="local.index">04 / LOCAL BY DESIGN</p>
           <h2 data-i18n-html="local.title">你的声音，<br />留在你的 Mac。</h2>
           <p data-i18n="local.summary">
             AppVolume 面向本地实时音频处理设计，使用 macOS 原生 CoreAudio 能力，
@@ -460,10 +596,10 @@
       <section class="changelog-section" id="changelog">
         <div class="changelog-layout">
           <div class="changelog-copy" data-reveal>
-            <p class="section-index" data-i18n="changelog.index">04 / 更新日志</p>
-            <h2 data-i18n-html="changelog.title">1.0.3 已上线。<br />1.0.4 正在把声音推得更远。</h2>
+            <p class="section-index" data-i18n="changelog.index">05 / 更新日志</p>
+            <h2 data-i18n-html="changelog.title">1.0.6 正在准备。<br />把每天的调音动作收进 Quick Mix。</h2>
             <p data-i18n="changelog.summary">
-              1.0.3 已于 2026 年 8 月 30 日上线。这是一次维护版本，核心音频功能保持稳定；你仍可独立控制每个 App 的音量、自动恢复已保存设置，并用全局快捷键静音当前 App。1.0.4 正在开发，加入最多两个免费 App 的 0–200% 应用增益和默认峰值保护。这里同时记录已发布版本和正在规划的方向；规划项不代表具体交付日期承诺。
+              1.0.6 将 Quick Mix Lite、固定常用 App 和临时静音带到菜单栏。免费版可以先体验会议、专注和游戏场景；Pro 继续解锁不限 App 与应用级输出路由。这里同时记录已发布版本和正在准备的方向；规划项不代表具体交付日期承诺。
             </p>
           </div>
 
@@ -480,7 +616,7 @@
                   <i aria-hidden="true"></i>
                   <span data-i18n="changelog.in_development_status">开发中</span>
                 </div>
-                <h3 data-i18n="changelog.item_release_104">1.0.4 · 应用增益 0–200%、默认峰值保护（开发中）</h3>
+                <h3 data-i18n="changelog.item_release_106">1.0.6 · Quick Mix Lite、固定常用 App、临时静音（预览）</h3>
                 <span class="roadmap-icon" aria-hidden="true">
                   <svg viewBox="0 0 34 34">
                     <path d="M7 25V14M17 25V8M27 25V18" />
@@ -603,7 +739,7 @@
           <p data-i18n="cta.summary">免费版可独立控制最多 2 个 App 的音量；一次买断 Pro，解锁不限 App 音量与应用级输出路由。</p>
           <div class="availability-line">
             <span class="availability-dot"></span>
-            <span data-i18n="cta.status">1.0.3 已在 Mac App Store 上线</span>
+            <span data-i18n="cta.status">1.0.6 预览 · Mac App Store 已上线</span>
           </div>
           <a
             class="button button-light"

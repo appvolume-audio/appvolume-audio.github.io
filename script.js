@@ -273,11 +273,11 @@ document.querySelectorAll("[data-app-row]").forEach((row) => {
   updateDeviceRoute();
 });
 
-const createToast = () => {
+const createToast = (message = translate("ui.settings_toast")) => {
   const toast = document.createElement("div");
   toast.className = "demo-toast";
   toast.setAttribute("role", "status");
-  toast.textContent = translate("ui.settings_toast");
+  toast.textContent = message;
   document.body.append(toast);
   requestAnimationFrame(() => toast.classList.add("is-visible"));
   window.setTimeout(() => {
@@ -285,6 +285,170 @@ const createToast = () => {
     window.setTimeout(() => toast.remove(), 180);
   }, 2200);
 };
+
+const quickMixTabs = [...document.querySelectorAll(".quick-mix-tab")];
+const quickMixTitle = document.querySelector("[data-quick-mix-title]");
+const quickMixSummary = document.querySelector("[data-quick-mix-summary]");
+const quickMixList = document.querySelector("[data-quick-mix-list]");
+const quickMixApply = document.querySelector(".quick-mix-apply");
+const quickMixStatus = document.querySelector("[data-quick-mix-status]");
+const ratingRequest = document.querySelector("[data-rating-request]");
+const modeLabelKeys = {
+  meeting: "quick_mix.meeting_label",
+  focus: "quick_mix.focus_label",
+  gaming: "quick_mix.gaming_label"
+};
+const modeApplyKeys = {
+  meeting: "quick_mix.apply_meeting",
+  focus: "quick_mix.apply_focus",
+  gaming: "quick_mix.apply_gaming"
+};
+
+let activeQuickMixTab = quickMixTabs.find((tab) => tab.classList.contains("is-active")) || quickMixTabs[0];
+let appliedQuickMixMode = null;
+let ratingPromptShown = false;
+
+const showRatingPrompt = () => {
+  if (!ratingRequest || ratingPromptShown) return;
+  ratingPromptShown = true;
+  ratingRequest.hidden = false;
+  ratingRequest.classList.add("is-earned");
+};
+
+const updateQuickMixMode = (tab, { preserveStatus = false } = {}) => {
+  if (!tab || !quickMixTitle || !quickMixSummary || !quickMixList) return;
+
+  activeQuickMixTab = tab;
+  quickMixTabs.forEach((candidate) => {
+    const isActive = candidate === tab;
+    candidate.classList.toggle("is-active", isActive);
+    candidate.setAttribute("aria-selected", String(isActive));
+  });
+
+  const mode = tab.dataset.mode || "meeting";
+  quickMixTitle.textContent = translate(tab.dataset.titleKey || "quick_mix.meeting_title");
+  quickMixSummary.textContent = translate(tab.dataset.summaryKey || "quick_mix.meeting_summary");
+  const itemKeys = (tab.dataset.items || "").split("|").filter(Boolean);
+  [...quickMixList.children].forEach((item, index) => {
+    const key = itemKeys[index];
+    if (key) item.textContent = translate(key);
+  });
+
+  if (quickMixApply) {
+    quickMixApply.textContent = translate(modeApplyKeys[mode] || modeApplyKeys.meeting);
+    quickMixApply.dataset.mode = mode;
+  }
+
+  if (quickMixStatus && !preserveStatus) {
+    quickMixStatus.textContent = appliedQuickMixMode === mode
+      ? translate("quick_mix.applied", { mode: translate(modeLabelKeys[mode]) })
+      : translate("quick_mix.ready");
+  }
+};
+
+quickMixTabs.forEach((tab) => {
+  tab.addEventListener("click", () => updateQuickMixMode(tab));
+});
+
+quickMixApply?.addEventListener("click", () => {
+  const mode = quickMixApply.dataset.mode || activeQuickMixTab?.dataset.mode || "meeting";
+  const modeLabel = translate(modeLabelKeys[mode]);
+  appliedQuickMixMode = mode;
+  if (quickMixStatus) quickMixStatus.textContent = translate("quick_mix.applied", { mode: modeLabel });
+  createToast(translate("quick_mix.success_toast", { mode: modeLabel }));
+  showRatingPrompt();
+});
+
+const renderPinnedApp = (row) => {
+  const button = row.querySelector(".pin-toggle");
+  const state = row.querySelector(".pinned-app-state");
+  if (!button) return;
+  const isPinned = button.getAttribute("aria-pressed") === "true";
+  const app = button.dataset.app || row.dataset.pinnedApp || "App";
+  row.classList.toggle("is-pinned", isPinned);
+  button.setAttribute("aria-label", translate(isPinned ? "quick_mix.unpin_app" : "quick_mix.pin_app", { app }));
+  if (state) state.textContent = translate(isPinned ? "quick_mix.pinned" : "quick_mix.unpinned");
+};
+
+document.querySelectorAll(".pinned-app-row").forEach((row) => {
+  const button = row.querySelector(".pin-toggle");
+  button?.addEventListener("click", () => {
+    const isPinned = button.getAttribute("aria-pressed") === "true";
+    button.setAttribute("aria-pressed", String(!isPinned));
+    renderPinnedApp(row);
+    showRatingPrompt();
+  });
+  renderPinnedApp(row);
+});
+
+const temporaryMuteButtons = [...document.querySelectorAll("[data-temp-mute]")];
+const temporaryMuteStatus = document.querySelector("[data-temp-mute-status]");
+let temporaryMuteRemaining = 0;
+let temporaryMuteWasRestored = false;
+let temporaryMuteTimer = null;
+
+const renderTemporaryMute = () => {
+  temporaryMuteButtons.forEach((button) => {
+    button.classList.toggle("is-active", Number(button.dataset.tempMute) > 0 && Number(button.dataset.tempMute) === temporaryMuteRemaining);
+  });
+
+  if (!temporaryMuteStatus) return;
+  if (temporaryMuteRemaining > 0) {
+    temporaryMuteStatus.textContent = translate("quick_mix.temp_running", { seconds: temporaryMuteRemaining });
+  } else if (temporaryMuteWasRestored) {
+    temporaryMuteStatus.textContent = translate("quick_mix.temp_restored");
+  } else {
+    temporaryMuteStatus.textContent = translate("quick_mix.temp_ready");
+  }
+};
+
+const startTemporaryMute = (seconds) => {
+  if (temporaryMuteTimer) window.clearInterval(temporaryMuteTimer);
+  temporaryMuteTimer = null;
+  temporaryMuteRemaining = Number(seconds) || 0;
+  temporaryMuteWasRestored = temporaryMuteRemaining === 0;
+  renderTemporaryMute();
+
+  if (temporaryMuteRemaining <= 0) {
+    showRatingPrompt();
+    return;
+  }
+
+  showRatingPrompt();
+  temporaryMuteTimer = window.setInterval(() => {
+    temporaryMuteRemaining -= 1;
+    if (temporaryMuteRemaining <= 0) {
+      temporaryMuteRemaining = 0;
+      temporaryMuteWasRestored = true;
+      window.clearInterval(temporaryMuteTimer);
+      temporaryMuteTimer = null;
+    }
+    renderTemporaryMute();
+  }, 1000);
+};
+
+temporaryMuteButtons.forEach((button) => {
+  button.addEventListener("click", () => startTemporaryMute(button.dataset.tempMute));
+});
+
+document.querySelectorAll(".app-slider, .mute-button, .device-select").forEach((control) => {
+  control.addEventListener("input", showRatingPrompt);
+  control.addEventListener("change", showRatingPrompt);
+  control.addEventListener("click", showRatingPrompt);
+});
+
+document.addEventListener("appvolume:languagechange", () => {
+  updateQuickMixMode(activeQuickMixTab, { preserveStatus: true });
+  if (quickMixStatus && appliedQuickMixMode) {
+    quickMixStatus.textContent = translate("quick_mix.applied", {
+      mode: translate(modeLabelKeys[appliedQuickMixMode])
+    });
+  }
+  document.querySelectorAll(".pinned-app-row").forEach(renderPinnedApp);
+  renderTemporaryMute();
+});
+
+updateQuickMixMode(activeQuickMixTab);
 
 document.querySelector(".settings-button")?.addEventListener("click", createToast);
 

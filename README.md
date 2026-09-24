@@ -17,11 +17,12 @@ python3 -m http.server 4173 --directory Website
 ## 内容边界
 
 - 页面依据当前 SwiftUI、CoreAudio、StoreKit 与本地化实现编写。
-- 当前公开发布基线为 AppVolume 1.0.3（Build 5），公开发布时间为 2026-08-29 17:13:07 UTC（北京时间 2026-08-30 01:13:07）；工程正在准备 1.0.4（Build 6）。发布历史包含 1.0.0、1.0.1、1.0.2 和 1.0.3。
+- 当前页面展示 AppVolume 1.0.6 / Quick Mix Lite 预览；公开发布基线与 Mac App Store 上的实际版本以 App Store Connect 为准。页面将 1.0.6 的场景能力标记为预览或规划中，不把规划项当作已经交付的版本承诺。
 - 页头和底部下载按钮均指向正式 Mac App Store 商品页：<https://apps.apple.com/app/appvolume/id6800678477>。
 - 页头提供固定可见的“联系我们 / Contact us”入口，点击会打开邮件客户端并发送至 `zhuluran@gmail.com`；邮件主题会随当前语言切换。
-- 免费版可控制最多两个活跃 App 的独立音量、静音和最高 200% 应用增益；应用级输出路由和不限 App 控制属于一次性买断的 AppVolume Pro。
-- 更新日志同时展示已发布版本和公开规划。1.0.3 是维护版本，核心音频功能保持稳定；1.0.4 目前处于开发中，规划项不代表具体交付版本或日期承诺。
+- 免费版可控制最多两个活跃 App 的独立音量、静音和最高 200% 应用增益；应用级输出路由和不限 App 控制属于一次性买断的 AppVolume Pro。官网的 Quick Mix Lite、固定常用 App、临时静音和评分请求均为无外部依赖的营销演示交互。
+- 更新日志同时展示已发布版本和公开规划。1.0.6 预览聚焦场景化混音、固定常用 App 和临时静音；规划项不代表具体交付版本或日期承诺。
+- App Store Connect 可直接使用的中英文字段、截图顺序与上线口径见 `Documentation/1.0.6_MARKETING_COPY.md`。
 
 ## 国际化
 
